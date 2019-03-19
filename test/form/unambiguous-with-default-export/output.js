@@ -1,3 +1,3 @@
-require( './foo.js' );
+const foo = require('./foo.js');
 
-export default {};
+export default { foo };

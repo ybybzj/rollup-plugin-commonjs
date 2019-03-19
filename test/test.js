@@ -10,6 +10,7 @@ const { SourceMapConsumer } = require('source-map');
 const { getLocator } = require('locate-character');
 const { rollup } = require('rollup');
 const resolve = require('rollup-plugin-node-resolve');
+const prettier = require('prettier');
 
 function commonjs(options) {
 	delete require.cache[require.resolve('..')];
@@ -103,7 +104,9 @@ describe('rollup-plugin-commonjs', () => {
 
 				return transform.call(transformContext, input, 'input.js').then(transformed => {
 					const actual = (transformed ? transformed.code : input).trim().replace(/\0/g, '');
-					assert.equal(actual, expected);
+					const actualCode = prettier.format(actual, { parser: 'babel' });
+					const expectedCode = prettier.format(expected, { parser: 'babel' });
+					assert.equal(actualCode, expectedCode);
 				});
 			});
 		});
