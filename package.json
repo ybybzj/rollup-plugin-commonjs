@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-commonjs2",
-  "version": "9.2.1",
+  "version": "9.2.2",
   "description": "Fork rollup-plugin-commonjs",
   "main": "dist/rollup-plugin-commonjs.cjs.js",
   "module": "dist/rollup-plugin-commonjs.es.js",
