@@ -1,7 +1,7 @@
 {
-  "name": "rollup-plugin-commonjs",
-  "version": "9.2.0",
-  "description": "Convert CommonJS modules to ES2015",
+  "name": "rollup-plugin-commonjs2",
+  "version": "9.2.1",
+  "description": "Fork rollup-plugin-commonjs",
   "main": "dist/rollup-plugin-commonjs.cjs.js",
   "module": "dist/rollup-plugin-commonjs.es.js",
   "jsnext:main": "dist/rollup-plugin-commonjs.es.js",
@@ -46,11 +46,11 @@
     "source-map": "^0.7.3",
     "source-map-support": "^0.5.10"
   },
-  "repository": "rollup/rollup-plugin-commonjs",
+  "repository": "ybybzj/rollup-plugin-commonjs",
   "author": "Rich Harris",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rollup/rollup-plugin-commonjs/issues"
+    "url": "https://github.com/ybybzj/rollup-plugin-commonjs/issues"
   },
-  "homepage": "https://github.com/rollup/rollup-plugin-commonjs"
+  "homepage": "https://github.com/ybybzj/rollup-plugin-commonjs"
 }

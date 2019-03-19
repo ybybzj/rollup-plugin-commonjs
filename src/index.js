@@ -35,8 +35,8 @@ export default function commonjs(options = {}) {
 		typeof options.ignore === 'function'
 			? options.ignore
 			: Array.isArray(options.ignore)
-				? id => options.ignore.includes(id)
-				: () => false;
+			? id => options.ignore.includes(id)
+			: () => false;
 
 	let entryModuleIdsPromise = null;
 
@@ -53,8 +53,8 @@ export default function commonjs(options = {}) {
 			const entryModules = Array.isArray(input)
 				? input
 				: typeof input === 'object' && input !== null
-					? Object.values(input)
-					: [input];
+				? Object.values(input)
+				: [input];
 			entryModuleIdsPromise = Promise.all(entryModules.map(entry => resolveId(entry)));
 		},
 
@@ -100,17 +100,19 @@ export default function commonjs(options = {}) {
 
 			const transformPromise = entryModuleIdsPromise
 				.then(entryModuleIds => {
-					const { isEsModule, hasDefaultExport, ast } = checkEsModule(this.parse, code, id);
-					if (isEsModule) {
+					const { hasDefaultExport, ast } = checkEsModule(this.parse, code, id);
+					// if (isEsModule) {
+					// 	(hasDefaultExport ? esModulesWithDefaultExport : esModulesWithoutDefaultExport)[
+					// 		id
+					// 	] = true;
+					// 	return null;
+					// }
+
+					// no matter is an ES module or not, do the transform if it dose have CJS-specific elements.
+					if (!hasCjsKeywords(code, ignoreGlobal)) {
 						(hasDefaultExport ? esModulesWithDefaultExport : esModulesWithoutDefaultExport)[
 							id
 						] = true;
-						return null;
-					}
-
-					// it is not an ES module but it does not have CJS-specific elements.
-					if (!hasCjsKeywords(code, ignoreGlobal)) {
-						esModulesWithoutDefaultExport[id] = true;
 						return null;
 					}
 
