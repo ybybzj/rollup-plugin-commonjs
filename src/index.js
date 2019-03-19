@@ -35,8 +35,8 @@ export default function commonjs(options = {}) {
 		typeof options.ignore === 'function'
 			? options.ignore
 			: Array.isArray(options.ignore)
-			? id => options.ignore.includes(id)
-			: () => false;
+				? id => options.ignore.includes(id)
+				: () => false;
 
 	let entryModuleIdsPromise = null;
 
@@ -53,8 +53,8 @@ export default function commonjs(options = {}) {
 			const entryModules = Array.isArray(input)
 				? input
 				: typeof input === 'object' && input !== null
-				? Object.values(input)
-				: [input];
+					? Object.values(input)
+					: [input];
 			entryModuleIdsPromise = Promise.all(entryModules.map(entry => resolveId(entry)));
 		},
 
